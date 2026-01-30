@@ -59,7 +59,8 @@ bool timed_remote_scene_ir_select_on_event(void *context,
 
   if (event.type == SceneManagerEventTypeCustom) {
     if (event.event == TimedRemoteEventSignalSelected) {
-      scene_manager_next_scene(app->scene_manager, TimedRemoteSceneTimerMode);
+      scene_manager_next_scene(app->scene_manager,
+                               TimedRemoteSceneTimerConfig);
       consumed = true;
     }
   }

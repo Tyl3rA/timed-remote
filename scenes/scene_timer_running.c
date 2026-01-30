@@ -106,7 +106,7 @@ bool timed_remote_scene_timer_running_on_event(void *context,
   } else if (event.type == SceneManagerEventTypeBack) {
     /* User pressed Back - cancel timer */
     scene_manager_search_and_switch_to_previous_scene(app->scene_manager,
-                                                      TimedRemoteSceneMainMenu);
+                                                      TimedRemoteSceneIrBrowse);
     consumed = true;
   }
 

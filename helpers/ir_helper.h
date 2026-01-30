@@ -32,26 +32,6 @@ IrSignalList *ir_signal_list_alloc(void);
 void ir_signal_list_free(IrSignalList *list);
 
 /**
- * Record an IR signal from the receiver.
- * Blocks until signal is received or timeout.
- *
- * @param signal Output: allocated InfraredSignal (caller must free)
- * @param timeout_ms Timeout in milliseconds
- * @return true if signal recorded, false on timeout/error
- */
-bool ir_helper_record(InfraredSignal **signal, uint32_t timeout_ms);
-
-/**
- * Save a signal to an .ir file (appends if file exists).
- *
- * @param signal The signal to save
- * @param name Signal name (e.g., "Power")
- * @param path File path (e.g., "/ext/infrared/timed_remote.ir")
- * @return true on success
- */
-bool ir_helper_save(InfraredSignal *signal, const char *name, const char *path);
-
-/**
  * Load all signals from an .ir file.
  *
  * @param path File path to load

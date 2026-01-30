@@ -30,9 +30,9 @@ bool timed_remote_scene_confirm_on_event(void *context,
 
   if (event.type == SceneManagerEventTypeCustom) {
     if (event.event == TimedRemoteEventConfirmDone) {
-      /* Return to main menu */
+      /* Return to file browser */
       scene_manager_search_and_switch_to_previous_scene(
-          app->scene_manager, TimedRemoteSceneMainMenu);
+          app->scene_manager, TimedRemoteSceneIrBrowse);
       consumed = true;
     }
   }

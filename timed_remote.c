@@ -107,8 +107,8 @@ int32_t timed_remote_app(void *p) {
 
   TimedRemoteApp *app = timed_remote_app_alloc();
 
-  /* Start with main menu scene */
-  scene_manager_next_scene(app->scene_manager, TimedRemoteSceneMainMenu);
+  /* Start with file browser scene */
+  scene_manager_next_scene(app->scene_manager, TimedRemoteSceneIrBrowse);
 
   /* Run event loop */
   view_dispatcher_run(app->view_dispatcher);

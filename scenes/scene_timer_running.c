@@ -92,16 +92,23 @@ bool timed_remote_scene_timer_running_on_event(void *context,
         ir_helper_transmit(app->ir_signal);
       }
 
-      app->repeats_remaining--;
-
-      if (app->repeat_count != 0 && app->repeats_remaining > 0) {
-        /* Reset countdown for next repeat */
+      if (app->repeat_count == 255) {
+        /* Unlimited repeat */
         app->seconds_remaining =
             time_helper_hms_to_seconds(app->hours, app->minutes, app->seconds);
         update_display(app);
       } else {
-        /* Done - show confirmation */
-        scene_manager_next_scene(app->scene_manager, TimedRemoteSceneConfirm);
+        app->repeats_remaining--;
+
+        if (app->repeat_count != 0 && app->repeats_remaining > 0) {
+          /* Reset countdown for next repeat */
+          app->seconds_remaining = time_helper_hms_to_seconds(
+              app->hours, app->minutes, app->seconds);
+          update_display(app);
+        } else {
+          /* Done - show confirmation */
+          scene_manager_next_scene(app->scene_manager, TimedRemoteSceneConfirm);
+        }
       }
       consumed = true;
     }

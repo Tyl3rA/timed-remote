@@ -31,10 +31,12 @@ uint32_t time_helper_seconds_until(uint8_t target_h, uint8_t target_m,
   uint32_t target_seconds =
       time_helper_hms_to_seconds(target_h, target_m, target_s);
 
-  if (target_seconds <= now_seconds) {
-    return 0; /* Target time has already passed today */
+  if (target_seconds < now_seconds) {
+    /* Roll to next day */
+    return (24 * 3600 - now_seconds) + target_seconds;
   }
 
+  /* Target time is now or later today */
   return target_seconds - now_seconds;
 }
 

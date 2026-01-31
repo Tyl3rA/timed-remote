@@ -27,13 +27,14 @@ void time_helper_seconds_to_hms(uint32_t total_seconds, uint8_t *h, uint8_t *m,
 
 #ifndef TIMED_REMOTE_TEST_BUILD
 /**
- * Calculate seconds remaining until a target time (today).
- * Uses Flipper's RTC. If target time has passed, returns 0.
+ * Calculate seconds remaining until a target time.
+ * Uses Flipper's RTC. If target time has passed, rolls to next day.
+ * If target time is exactly now, returns 0.
  *
  * @param target_h Target hour (0-23)
  * @param target_m Target minute (0-59)
  * @param target_s Target second (0-59)
- * @return Seconds until target, or 0 if already passed
+ * @return Seconds until target (today or next day), or 0 if now
  */
 uint32_t time_helper_seconds_until(uint8_t target_h, uint8_t target_m,
                                    uint8_t target_s);

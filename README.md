@@ -13,10 +13,7 @@ A Flipper Zero application that sends IR (infrared) commands after a configurabl
 ## Building
 
 ```sh
-# Install ufbt (first time only)
-pip install -r requirements.txt
-
-# Build the application
+# Install requirements (first time only) and build the application
 make
 
 # Deploy to Flipper Zero connected via USB
